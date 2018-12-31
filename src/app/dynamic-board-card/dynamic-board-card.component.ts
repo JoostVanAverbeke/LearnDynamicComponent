@@ -6,6 +6,7 @@ import { CARD_COMPONENT_KEY } from '../shared/tokens/card.component.key.token';
 import { DynamicTitleComponent } from '../dynamic-title/dynamic-title.component';
 import { FunctionParameter } from '../shared/models/function.parameter';
 import { FUNCTION_PARAMETERS } from '../shared/tokens/function-parameters.token';
+import {FunctionParameters} from '../shared/models/function.parameters';
 
 @Component({
   selector: 'app-dynamic-board-card',
@@ -14,13 +15,13 @@ import { FUNCTION_PARAMETERS } from '../shared/tokens/function-parameters.token'
 })
 export class DynamicBoardCardComponent implements OnInit {
   @Input() componentType: string;
-  @Input() functionParameters: FunctionParameter[];
+  @Input() functionParameters: FunctionParameters;
   outlet = null;
   dynamicComponentInjector: Injector;
 
   constructor(private parentInjector: Injector) { }
 
-  set dynamicFunctionsParameters(functionParameters: FunctionParameter[]) {
+  set dynamicFunctionsParameters(functionParameters: FunctionParameters) {
     this.dynamicComponentInjector = ReflectiveInjector.resolveAndCreate([{
       provide: FUNCTION_PARAMETERS,
       useValue: functionParameters,

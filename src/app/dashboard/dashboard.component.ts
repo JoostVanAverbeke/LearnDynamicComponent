@@ -18,33 +18,30 @@ export class DashboardComponent implements OnInit {
     const functionParameter4: FunctionParameter = { parameter: 'board', value: 4};
     const functionParameter5: FunctionParameter = { parameter: 'board', value: 7};
     const functionParameter6: FunctionParameter = { parameter: 'title', value: 'hello dynamic angular'};
+    const functionParameter7: FunctionParameter = { parameter: 'second', value: 'this is my second function parameter'};
 
-    const functionParameters1: FunctionParameter[] = [
-      functionParameter1
-    ];
-    const functionParameters2: FunctionParameter[] = [
-      functionParameter2
-    ];
-    const functionParameters3: FunctionParameter[] = [
-      functionParameter3
-    ];
-    const functionParameters4: FunctionParameter[] = [
-      functionParameter4
-    ];
-    const functionParameters5: FunctionParameter[] = [
-      functionParameter5
-    ];
-    const functionParameters6: FunctionParameter[] = [
-      functionParameter6
-    ];
+    const dashboardCard1 =  new DashboardCard('overview');
+    const dashboardCard2 =  new DashboardCard('overview');
+    const dashboardCard3 =  new DashboardCard('hello');
+    const dashboardCard4 =  new DashboardCard('burndown');
+    const dashboardCard5 =  new DashboardCard('burndown');
+    const dashboardCard6 =  new DashboardCard('dynamic-title');
+
+    dashboardCard1.addFuntionParameter(functionParameter1);
+    dashboardCard2.addFuntionParameter(functionParameter2);
+    dashboardCard3.addFuntionParameter(functionParameter3);
+    dashboardCard4.addFuntionParameter(functionParameter4);
+    dashboardCard5.addFuntionParameter(functionParameter5);
+    dashboardCard6.addFuntionParameter(functionParameter6);
+    dashboardCard6.addFuntionParameter(functionParameter7);
 
     this.dashboardCards = [
-        new DashboardCard('overview', functionParameters1),
-        new DashboardCard('overview', functionParameters2),
-        new DashboardCard('hello', functionParameters3),
-        new DashboardCard('burndown', functionParameters4),
-        new DashboardCard('burndown', functionParameters5),
-        new DashboardCard('dynamic-title', functionParameters6)
+      dashboardCard1,
+      dashboardCard2,
+      dashboardCard3,
+      dashboardCard4,
+      dashboardCard5,
+      dashboardCard6
     ];
   }
 

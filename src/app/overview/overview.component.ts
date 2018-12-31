@@ -1,6 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FunctionParameter } from '../shared/models/function.parameter';
 import { FUNCTION_PARAMETERS } from '../shared/tokens/function-parameters.token';
+import { FunctionParameters } from '../shared/models/function.parameters';
 
 @Component({
   selector: 'app-overview',
@@ -9,7 +10,7 @@ import { FUNCTION_PARAMETERS } from '../shared/tokens/function-parameters.token'
 })
 export class OverviewComponent implements OnInit {
   @Input() board: number;
-  constructor(@Inject(FUNCTION_PARAMETERS) private functionParametersInjected: FunctionParameter[]) {
+  constructor(@Inject(FUNCTION_PARAMETERS) private functionParametersInjected: FunctionParameters) {
   }
   ngOnInit() {
     this.board = this.board || this.getBoardFunctionParameterValue();
@@ -17,9 +18,8 @@ export class OverviewComponent implements OnInit {
   private getBoardFunctionParameterValue(): number {
     let returnBoard: number = null;
     let boardFunctionParameter: FunctionParameter;
-    if (this.functionParametersInjected && this.functionParametersInjected.length > 0) {
-      boardFunctionParameter = this.functionParametersInjected.find(
-        functionParameter => functionParameter.parameter === 'board');
+    if (this.functionParametersInjected) {
+      boardFunctionParameter = this.functionParametersInjected.findByParameter('board');
       if (boardFunctionParameter) {
         returnBoard = boardFunctionParameter.value;
       }

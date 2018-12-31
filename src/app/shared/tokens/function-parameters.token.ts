@@ -1,9 +1,9 @@
 import { InjectionToken } from '@angular/core';
-import { FunctionParameter } from '../models/function.parameter';
+import {FunctionParameters} from '../models/function.parameters';
 /**
  * Created by joost on 30-12-18.
  */
-export const FUNCTION_PARAMETERS = new InjectionToken<FunctionParameter[]>('function-parameters', {
+export const FUNCTION_PARAMETERS = new InjectionToken<FunctionParameters>('function-parameters', {
   providedIn: 'root',
-  factory: () => []
+  factory: () => new FunctionParameters()
 });
