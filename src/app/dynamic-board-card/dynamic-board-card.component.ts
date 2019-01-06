@@ -6,7 +6,8 @@ import { CARD_COMPONENT_KEY } from '../shared/tokens/card.component.key.token';
 import { DynamicTitleComponent } from '../dynamic-title/dynamic-title.component';
 import { FunctionParameter } from '../shared/models/function.parameter';
 import { FUNCTION_PARAMETERS } from '../shared/tokens/function-parameters.token';
-import {FunctionParameters} from '../shared/models/function.parameters';
+import { FunctionParameters} from '../shared/models/function.parameters';
+import { DashboardCardMap} from '../shared/models/dashboard-card-map';
 
 @Component({
   selector: 'app-dynamic-board-card',
@@ -36,19 +37,14 @@ export class DynamicBoardCardComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.componentType === 'burndown') {
-      this.outlet = BurndownComponent;
+    const dashboardCardMap = DashboardCardMap.getInstance();
+    const outlet: any = dashboardCardMap.getDashboardCardComponent(this.componentType);
+    if (outlet) {
+      this.outlet = outlet;
       this.dynamicFunctionsParameters = this.functionParameters;
-    } else if (this.componentType === 'overview') {
-      this.outlet = OverviewComponent;
-      this.dynamicFunctionsParameters = this.functionParameters;
-    } else if (this.componentType === 'dynamic-title') {
-      this.outlet = DynamicTitleComponent;
-      this.dynamicFunctionsParameters = this.functionParameters;
-    } else {
+     } else {
       this.outlet = UnsupportedCardComponent;
       this.dynamicCardComponentKey = this.componentType;
     }
   }
-
 }

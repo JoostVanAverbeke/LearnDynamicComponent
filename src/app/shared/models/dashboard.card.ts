@@ -4,13 +4,22 @@ import { FunctionParameters } from './function.parameters';
  * Created by joost on 09-12-18.
  */
 export class DashboardCard {
-  componentType: string;
-  functionParameters: FunctionParameters;
+  private _componentType: string;
+  private _functionParameters: FunctionParameters;
   constructor(type: string) {
-    this.componentType = type;
-    this.functionParameters = new FunctionParameters();
+    this._componentType = type;
+    this._functionParameters = new FunctionParameters();
   }
-  addFuntionParameter(functionParameter: FunctionParameter) {
-    this.functionParameters.push(functionParameter);
+  addFunctionParameter(functionParameter: FunctionParameter): void {
+    this._functionParameters.push(functionParameter);
+  }
+  numberOfFunctionParameters(): number {
+    return this._functionParameters.length();
+  }
+  get componentType(): string {
+    return this._componentType;
+  }
+  get functionParameters(): FunctionParameters {
+    return this._functionParameters;
   }
 }

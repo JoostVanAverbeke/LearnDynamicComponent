@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DynamicBoardCardComponent } from './dynamic-board-card.component';
+import { DynamicDashboardCardModule } from '../dynamic-dashboard-card/dynamic-dashboard-card.module';
 
 describe('DynamicBoardCardComponent', () => {
   let component: DynamicBoardCardComponent;
@@ -8,7 +9,12 @@ describe('DynamicBoardCardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DynamicBoardCardComponent ]
+      declarations: [
+        DynamicBoardCardComponent,
+      ],
+      imports: [
+        DynamicDashboardCardModule
+      ]
     })
     .compileComponents();
   }));
